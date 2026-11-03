@@ -1,0 +1,22 @@
+@model PAP.DataAccess.PurchaseOrderItem
+@{ ViewBag.Title = "Edit PurchaseOrderItem"; }
+<h2>Edit PurchaseOrderItem</h2>
+@using (Html.BeginForm()) {
+@Html.AntiForgeryToken()
+@Html.ValidationSummary(true, "", new { @class = "text-danger" })
+@Html.HiddenFor(m => m.Id)
+<div class="form-group">@Html.LabelFor(m => m.PurchaseOrderId)
+@Html.DropDownList("PurchaseOrderId", null, "-- Seleccionar --", new { @class = "form-control" })
+@Html.ValidationMessageFor(m => m.PurchaseOrderId, "", new { @class = "text-danger" })</div>
+<div class="form-group">@Html.LabelFor(m => m.BookId)
+@Html.DropDownList("BookId", null, "-- Seleccionar --", new { @class = "form-control" })
+@Html.ValidationMessageFor(m => m.BookId, "", new { @class = "text-danger" })</div>
+<div class="form-group">@Html.LabelFor(m => m.Quantity)
+@Html.TextBoxFor(m => m.Quantity, new { @class = "form-control" })
+@Html.ValidationMessageFor(m => m.Quantity, "", new { @class = "text-danger" })</div>
+<div class="form-group">@Html.LabelFor(m => m.UnitCost)
+@Html.TextBoxFor(m => m.UnitCost, new { @class = "form-control" })
+@Html.ValidationMessageFor(m => m.UnitCost, "", new { @class = "text-danger" })</div>
+<button type="submit" class="btn btn-primary">Guardar</button>
+@Html.ActionLink("Volver", "Index", null, new { @class = "btn btn-secondary" })
+}

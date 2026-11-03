@@ -1,0 +1,15 @@
+@model PAP.DataAccess.PurchaseOrder
+@{ ViewBag.Title = "Delete PurchaseOrder"; }
+<h2>Delete PurchaseOrder</h2>
+<p>¿Confirma que desea eliminar este registro?</p>
+<dl class="dl-horizontal"><dt>Id</dt><dd>@Model.Id</dd>
+<dt>SupplierId</dt><dd>@Model.SupplierId</dd>
+<dt>OrderDate</dt><dd>@Model.OrderDate</dd>
+<dt>ExpectedDate</dt><dd>@Model.ExpectedDate</dd>
+<dt>Status</dt><dd>@Model.Status</dd>
+<dt>TotalCost</dt><dd>@Model.TotalCost</dd></dl>
+@using (Html.BeginForm("Delete", "PurchaseOrders", new { id = Model.Id }, FormMethod.Post)) {
+@Html.AntiForgeryToken()
+<button type="submit" class="btn btn-danger">Eliminar</button>
+}
+@Html.ActionLink("Volver", "Index")

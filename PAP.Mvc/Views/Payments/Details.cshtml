@@ -1,0 +1,13 @@
+@model PAP.DataAccess.Payment
+@{ ViewBag.Title = "Details Payment"; }
+<h2>Details Payment</h2>
+
+<dl class="dl-horizontal"><dt>Id</dt><dd>@Model.Id</dd>
+<dt>OrderId</dt><dd>@Model.OrderId</dd>
+<dt>PaymentMethod</dt><dd>@Model.PaymentMethod</dd>
+<dt>Amount</dt><dd>@Model.Amount</dd>
+<dt>PaymentDate</dt><dd>@Model.PaymentDate</dd>
+<dt>Status</dt><dd>@Model.Status</dd>
+<dt>TransactionRef</dt><dd>@Model.TransactionRef</dd></dl>
+@Html.ActionLink("Editar", "Edit", new { id = Model.Id }, new { @class = "btn btn-warning" })
+@Html.ActionLink("Volver", "Index")

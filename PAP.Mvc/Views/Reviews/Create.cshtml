@@ -1,0 +1,19 @@
+@model PAP.DataAccess.Review
+@{ ViewBag.Title = "Create Review"; }
+<h2>Create Review</h2>
+@using (Html.BeginForm()) {
+@Html.AntiForgeryToken()
+@Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+<div class="form-group">@Html.LabelFor(m => m.BookId)
+@Html.DropDownList("BookId", null, "-- Seleccionar --", new { @class = "form-control" })
+@Html.ValidationMessageFor(m => m.BookId, "", new { @class = "text-danger" })</div>
+<div class="form-group">@Html.LabelFor(m => m.CustomerId)
+@Html.DropDownList("CustomerId", null, "-- Seleccionar --", new { @class = "form-control" })
+@Html.ValidationMessageFor(m => m.CustomerId, "", new { @class = "text-danger" })</div>
+<div class="form-group">@Html.LabelFor(m => m.Comment)
+@Html.TextBoxFor(m => m.Comment, new { @class = "form-control" })
+@Html.ValidationMessageFor(m => m.Comment, "", new { @class = "text-danger" })</div>
+<button type="submit" class="btn btn-primary">Guardar</button>
+@Html.ActionLink("Volver", "Index", null, new { @class = "btn btn-secondary" })
+}

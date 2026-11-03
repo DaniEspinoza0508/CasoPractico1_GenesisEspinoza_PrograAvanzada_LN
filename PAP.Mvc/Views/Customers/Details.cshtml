@@ -1,0 +1,50 @@
+﻿
+@model PAP.DataAccess.Customer
+
+@{
+    ViewBag.Title = "Customer Details";
+}
+
+<h2>Customer Details</h2>
+
+<dl class="row">
+    <dt class="col-sm-3">ID</dt>
+    <dd class="col-sm-9">@Model.Id</dd>
+
+    <dt class="col-sm-3">First Name</dt>
+    <dd class="col-sm-9">@Model.FirstName</dd>
+
+    <dt class="col-sm-3">Last Name</dt>
+    <dd class="col-sm-9">@Model.LastName</dd>
+
+    <dt class="col-sm-3">Email</dt>
+    <dd class="col-sm-9">@Model.Email</dd>
+
+    <dt class="col-sm-3">Phone</dt>
+    <dd class="col-sm-9">@Model.Phone</dd>
+
+    <dt class="col-sm-3">Birth Date</dt>
+    <dd class="col-sm-9">
+        @(Model.BirthDate.HasValue
+            ? Model.BirthDate.Value.ToString("dd/MM/yyyy")
+            : "")
+    </dd>
+
+    <dt class="col-sm-3">Active</dt>
+    <dd class="col-sm-9">
+        @(Model.IsActive ? "Yes" : "No")
+    </dd>
+
+    <dt class="col-sm-3">Created At</dt>
+    <dd class="col-sm-9">@Model.CreatedAt</dd>
+
+    <dt class="col-sm-3">Updated At</dt>
+    <dd class="col-sm-9">@Model.UpdatedAt</dd>
+</dl>
+
+@Html.ActionLink("Edit", "Edit",
+    new { id = Model.Id },
+    new { @class = "btn btn-warning" })
+
+@Html.ActionLink("Back to List", "Index", null,
+    new { @class = "btn btn-secondary" })

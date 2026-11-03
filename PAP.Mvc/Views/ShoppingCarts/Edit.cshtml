@@ -1,0 +1,16 @@
+@model PAP.DataAccess.ShoppingCart
+@{ ViewBag.Title = "Edit ShoppingCart"; }
+<h2>Edit ShoppingCart</h2>
+@using (Html.BeginForm()) {
+@Html.AntiForgeryToken()
+@Html.ValidationSummary(true, "", new { @class = "text-danger" })
+@Html.HiddenFor(m => m.Id)
+<div class="form-group">@Html.LabelFor(m => m.CustomerId)
+@Html.DropDownList("CustomerId", null, "-- Seleccionar --", new { @class = "form-control" })
+@Html.ValidationMessageFor(m => m.CustomerId, "", new { @class = "text-danger" })</div>
+<div class="form-group">@Html.LabelFor(m => m.UpdatedAt)
+@Html.TextBoxFor(m => m.UpdatedAt, "{0:yyyy-MM-dd}", new { @class = "form-control", type = "date" })
+@Html.ValidationMessageFor(m => m.UpdatedAt, "", new { @class = "text-danger" })</div>
+<button type="submit" class="btn btn-primary">Guardar</button>
+@Html.ActionLink("Volver", "Index", null, new { @class = "btn btn-secondary" })
+}

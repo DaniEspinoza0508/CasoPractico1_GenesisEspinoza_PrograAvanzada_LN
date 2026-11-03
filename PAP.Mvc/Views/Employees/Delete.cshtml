@@ -1,0 +1,43 @@
+﻿
+@model PAP.DataAccess.Employee
+
+@{
+    ViewBag.Title = "Delete Employee";
+}
+
+<h2>Delete Employee</h2>
+
+<h4>Are you sure you want to delete this employee?</h4>
+
+<dl class="row">
+    <dt class="col-sm-3">ID</dt>
+    <dd class="col-sm-9">@Model.Id</dd>
+
+    <dt class="col-sm-3">Name</dt>
+    <dd class="col-sm-9">
+        @Model.FirstName @Model.LastName
+    </dd>
+
+    <dt class="col-sm-3">Email</dt>
+    <dd class="col-sm-9">@Model.Email</dd>
+
+    <dt class="col-sm-3">Role</dt>
+    <dd class="col-sm-9">
+        @(Model.Role != null
+            ? Model.Role.Name
+            : Model.RoleId.ToString())
+    </dd>
+</dl>
+
+@using (Html.BeginForm("Delete", "Employees",
+    new { id = Model.Id }, FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+
+    <button type="submit" class="btn btn-danger">
+        Delete
+    </button>
+
+    @Html.ActionLink("Cancel", "Index", null,
+        new { @class = "btn btn-secondary" })
+}

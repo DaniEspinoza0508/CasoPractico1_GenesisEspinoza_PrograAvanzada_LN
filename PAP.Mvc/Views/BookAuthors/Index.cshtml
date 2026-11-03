@@ -1,0 +1,37 @@
+
+@model IEnumerable<PAP.DataAccess.Author>
+
+@{
+    ViewBag.Title = "Libros y autores";
+}
+
+<h2>Libros y autores</h2>
+
+<p>
+    @Html.ActionLink("Asignar autor a libro", "Create",
+        "BookAuthors", null,
+        new { @class = "btn btn-primary" })
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Libro ID</th>
+            <th>Nombre del autor</th>
+            <th>Apellido</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var author in Model)
+        {
+            foreach (var book in author.Books)
+            {
+                <tr>
+                    <td>@book.Id</td>
+                    <td>@author.FirstName</td>
+                    <td>@author.LastName</td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>

@@ -1,0 +1,114 @@
+﻿
+@using PAP.Generators
+
+@{
+    ViewBag.Title = "Administración";
+
+    var generators = new[]
+    {
+        new { Name = "Authors", Action = "GenerateAuthors",
+              Enabled = new AuthorsGenerator().CanGenerate() },
+
+        new { Name = "Categories", Action = "GenerateCategories",
+              Enabled = new CategoriesGenerator().CanGenerate() },
+
+        new { Name = "Genres", Action = "GenerateGenres",
+              Enabled = new GenresGenerator().CanGenerate() },
+
+        new { Name = "Publishers", Action = "GeneratePublishers",
+              Enabled = new PublishersGenerator().CanGenerate() },
+
+        new { Name = "Suppliers", Action = "GenerateSuppliers",
+              Enabled = new SuppliersGenerator().CanGenerate() },
+
+        new { Name = "Customers", Action = "GenerateCustomers",
+              Enabled = new CustomersGenerator().CanGenerate() },
+
+        new { Name = "Addresses", Action = "GenerateAddresses",
+              Enabled = new AddressesGenerator().CanGenerate() },
+
+        new { Name = "Roles", Action = "GenerateRoles",
+              Enabled = new RolesGenerator().CanGenerate() },
+
+        new { Name = "Employees", Action = "GenerateEmployees",
+              Enabled = new EmployeesGenerator().CanGenerate() },
+
+        new { Name = "Books", Action = "GenerateBooks",
+              Enabled = new BooksGenerator().CanGenerate() },
+
+        new { Name = "BookAuthors", Action = "GenerateBookAuthors",
+              Enabled = new BookAuthorsGenerator().CanGenerate() },
+
+        new { Name = "Inventory", Action = "GenerateInventory",
+              Enabled = new InventoryGenerator().CanGenerate() },
+
+        new { Name = "Orders", Action = "GenerateOrders",
+              Enabled = new OrdersGenerator().CanGenerate() },
+
+        new { Name = "OrderItems", Action = "GenerateOrderItems",
+              Enabled = new OrderItemsGenerator().CanGenerate() },
+
+        new { Name = "Payments", Action = "GeneratePayments",
+              Enabled = new PaymentsGenerator().CanGenerate() },
+
+        new { Name = "ShoppingCarts", Action = "GenerateShoppingCarts",
+              Enabled = new ShoppingCartsGenerator().CanGenerate() },
+
+        new { Name = "CartItems", Action = "GenerateCartItems",
+              Enabled = new CartItemsGenerator().CanGenerate() },
+
+        new { Name = "Reviews", Action = "GenerateReviews",
+              Enabled = new ReviewsGenerator().CanGenerate() },
+
+        new { Name = "PurchaseOrders", Action = "GeneratePurchaseOrders",
+              Enabled = new PurchaseOrdersGenerator().CanGenerate() },
+
+        new { Name = "PurchaseOrderItems", Action = "GeneratePurchaseOrderItems",
+              Enabled = new PurchaseOrderItemsGenerator().CanGenerate() }
+    };
+}
+
+<h2>Administración - Generación de datos</h2>
+
+@if (TempData["Message"] != null)
+{
+    <p>@TempData["Message"]</p>
+}
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Entidad</th>
+            <th>Acción</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in generators)
+        {
+            <tr>
+                <td>@item.Name</td>
+                <td>
+                    @if (item.Enabled)
+                    {
+                        using (Html.BeginForm(item.Action, "Admin", FormMethod.Post))
+                        {
+                            @Html.AntiForgeryToken()
+
+                            <button type="submit" class="btn btn-primary">
+                                Generate
+                            </button>
+                        }
+                    }
+                    else
+                    {
+                        <button type="button"
+                                class="btn btn-secondary"
+                                disabled="disabled">
+                            Generate
+                        </button>
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

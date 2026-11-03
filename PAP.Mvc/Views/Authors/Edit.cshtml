@@ -1,0 +1,25 @@
+@model PAP.DataAccess.Author
+@{ ViewBag.Title = "Edit Author"; }
+<h2>Edit Author</h2>
+@using (Html.BeginForm()) {
+@Html.AntiForgeryToken()
+@Html.ValidationSummary(true, "", new { @class = "text-danger" })
+@Html.HiddenFor(m => m.Id)
+<div class="form-group">@Html.LabelFor(m => m.FirstName)
+@Html.TextBoxFor(m => m.FirstName, new { @class = "form-control" })
+@Html.ValidationMessageFor(m => m.FirstName, "", new { @class = "text-danger" })</div>
+<div class="form-group">@Html.LabelFor(m => m.LastName)
+@Html.TextBoxFor(m => m.LastName, new { @class = "form-control" })
+@Html.ValidationMessageFor(m => m.LastName, "", new { @class = "text-danger" })</div>
+<div class="form-group">@Html.LabelFor(m => m.Biography)
+@Html.TextBoxFor(m => m.Biography, new { @class = "form-control" })
+@Html.ValidationMessageFor(m => m.Biography, "", new { @class = "text-danger" })</div>
+<div class="form-group">@Html.LabelFor(m => m.BirthDate)
+@Html.TextBoxFor(m => m.BirthDate, "{0:yyyy-MM-dd}", new { @class = "form-control", type = "date" })
+@Html.ValidationMessageFor(m => m.BirthDate, "", new { @class = "text-danger" })</div>
+<div class="form-group">@Html.LabelFor(m => m.Country)
+@Html.TextBoxFor(m => m.Country, new { @class = "form-control" })
+@Html.ValidationMessageFor(m => m.Country, "", new { @class = "text-danger" })</div>
+<button type="submit" class="btn btn-primary">Guardar</button>
+@Html.ActionLink("Volver", "Index", null, new { @class = "btn btn-secondary" })
+}

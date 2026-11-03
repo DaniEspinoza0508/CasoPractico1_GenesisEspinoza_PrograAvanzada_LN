@@ -1,0 +1,12 @@
+@model PAP.DataAccess.OrderItem
+@{ ViewBag.Title = "Details OrderItem"; }
+<h2>Details OrderItem</h2>
+
+<dl class="dl-horizontal"><dt>Id</dt><dd>@Model.Id</dd>
+<dt>OrderId</dt><dd>@Model.OrderId</dd>
+<dt>BookId</dt><dd>@Model.BookId</dd>
+<dt>Quantity</dt><dd>@Model.Quantity</dd>
+<dt>UnitPrice</dt><dd>@Model.UnitPrice</dd>
+<dt>Discount</dt><dd>@Model.Discount</dd></dl>
+@Html.ActionLink("Editar", "Edit", new { id = Model.Id }, new { @class = "btn btn-warning" })
+@Html.ActionLink("Volver", "Index")

@@ -1,0 +1,83 @@
+﻿
+@model PAP.DataAccess.Book
+
+@{
+    ViewBag.Title = "Editar libro";
+}
+
+<main>
+    <h1 class="h2 mb-4">Editar libro</h1>
+
+    @using (Html.BeginForm("Edit", "Library",
+    new { id = Model.Id }, FormMethod.Post, null))
+    {
+        @Html.AntiForgeryToken()
+        @Html.HiddenFor(m => m.Id)
+
+        <div class="mb-3">
+            @Html.LabelFor(m => m.Title)
+            @Html.TextBoxFor(m => m.Title,
+                new { @class = "form-control", required = "required" })
+        </div>
+
+        <div class="mb-3">
+            @Html.LabelFor(m => m.Author)
+            @Html.TextBoxFor(m => m.Author,
+                new { @class = "form-control" })
+        </div>
+
+        <div class="mb-3">
+            @Html.LabelFor(m => m.Genre)
+            @Html.TextBoxFor(m => m.Genre,
+                new { @class = "form-control" })
+        </div>
+
+        <div class="mb-3">
+            @Html.LabelFor(m => m.Category)
+            @Html.TextBoxFor(m => m.Category,
+                new { @class = "form-control" })
+        </div>
+
+        <div class="mb-3">
+            @Html.LabelFor(m => m.Publisher)
+            @Html.TextBoxFor(m => m.Publisher,
+                new { @class = "form-control" })
+        </div>
+
+        <div class="mb-3">
+            @Html.LabelFor(m => m.Price)
+            @Html.TextBoxFor(m => m.Price,
+                new { @class = "form-control", type = "number", step = "0.01" })
+        </div>
+
+        <div class="mb-3">
+            @Html.LabelFor(m => m.Description)
+            @Html.TextAreaFor(m => m.Description,
+                new { @class = "form-control", rows = 3 })
+        </div>
+
+        <div class="mb-3 form-check">
+            @Html.CheckBoxFor(m => m.IsBestSeller,
+                new { @class = "form-check-input" })
+            @Html.LabelFor(m => m.IsBestSeller)
+        </div>
+
+        <div class="mb-3 form-check">
+            @Html.CheckBoxFor(m => m.IsInStock,
+                new { @class = "form-check-input" })
+            @Html.LabelFor(m => m.IsInStock)
+        </div>
+
+        <button type="submit" class="btn btn-primary">
+            Guardar cambios
+        </button>
+
+        @Html.ActionLink(
+            "Cancelar",
+            "Index",
+            "Library",
+            null,
+            new { @class = "btn btn-outline-dark" })
+    }
+</main>
+

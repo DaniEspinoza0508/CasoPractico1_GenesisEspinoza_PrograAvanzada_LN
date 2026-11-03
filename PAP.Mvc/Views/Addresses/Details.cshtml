@@ -1,0 +1,46 @@
+﻿
+@model PAP.DataAccess.Address
+
+@{
+    ViewBag.Title = "Address Details";
+}
+
+<h2>Address Details</h2>
+
+<dl class="row">
+    <dt class="col-sm-3">ID</dt>
+    <dd class="col-sm-9">@Model.Id</dd>
+
+    <dt class="col-sm-3">Customer ID</dt>
+    <dd class="col-sm-9">@Model.CustomerId</dd>
+
+    <dt class="col-sm-3">Type</dt>
+    <dd class="col-sm-9">@Model.AddressType</dd>
+
+    <dt class="col-sm-3">Street</dt>
+    <dd class="col-sm-9">@Model.Street</dd>
+
+    <dt class="col-sm-3">City</dt>
+    <dd class="col-sm-9">@Model.City</dd>
+
+    <dt class="col-sm-3">State</dt>
+    <dd class="col-sm-9">@Model.State</dd>
+
+    <dt class="col-sm-3">Postal Code</dt>
+    <dd class="col-sm-9">@Model.PostalCode</dd>
+
+    <dt class="col-sm-3">Country</dt>
+    <dd class="col-sm-9">@Model.Country</dd>
+
+    <dt class="col-sm-3">Default</dt>
+    <dd class="col-sm-9">
+        @(Model.IsDefault ? "Yes" : "No")
+    </dd>
+</dl>
+
+@Html.ActionLink("Edit", "Edit",
+    new { id = Model.Id },
+    new { @class = "btn btn-warning" })
+
+@Html.ActionLink("Back to List", "Index", null,
+    new { @class = "btn btn-secondary" })

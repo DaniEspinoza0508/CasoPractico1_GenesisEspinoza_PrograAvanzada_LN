@@ -1,0 +1,25 @@
+@model PAP.DataAccess.Payment
+@{ ViewBag.Title = "Create Payment"; }
+<h2>Create Payment</h2>
+@using (Html.BeginForm()) {
+@Html.AntiForgeryToken()
+@Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+<div class="form-group">@Html.LabelFor(m => m.OrderId)
+@Html.DropDownList("OrderId", null, "-- Seleccionar --", new { @class = "form-control" })
+@Html.ValidationMessageFor(m => m.OrderId, "", new { @class = "text-danger" })</div>
+<div class="form-group">@Html.LabelFor(m => m.PaymentMethod)
+@Html.TextBoxFor(m => m.PaymentMethod, new { @class = "form-control" })
+@Html.ValidationMessageFor(m => m.PaymentMethod, "", new { @class = "text-danger" })</div>
+<div class="form-group">@Html.LabelFor(m => m.Amount)
+@Html.TextBoxFor(m => m.Amount, new { @class = "form-control" })
+@Html.ValidationMessageFor(m => m.Amount, "", new { @class = "text-danger" })</div>
+<div class="form-group">@Html.LabelFor(m => m.Status)
+@Html.TextBoxFor(m => m.Status, new { @class = "form-control" })
+@Html.ValidationMessageFor(m => m.Status, "", new { @class = "text-danger" })</div>
+<div class="form-group">@Html.LabelFor(m => m.TransactionRef)
+@Html.TextBoxFor(m => m.TransactionRef, new { @class = "form-control" })
+@Html.ValidationMessageFor(m => m.TransactionRef, "", new { @class = "text-danger" })</div>
+<button type="submit" class="btn btn-primary">Guardar</button>
+@Html.ActionLink("Volver", "Index", null, new { @class = "btn btn-secondary" })
+}

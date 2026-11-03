@@ -1,0 +1,14 @@
+@model PAP.DataAccess.Inventory
+@{ ViewBag.Title = "Delete Inventory"; }
+<h2>Delete Inventory</h2>
+<p>¿Confirma que desea eliminar este registro?</p>
+<dl class="dl-horizontal"><dt>Id</dt><dd>@Model.Id</dd>
+<dt>BookId</dt><dd>@Model.BookId</dd>
+<dt>QuantityInStock</dt><dd>@Model.QuantityInStock</dd>
+<dt>ReorderLevel</dt><dd>@Model.ReorderLevel</dd>
+<dt>LastRestockedAt</dt><dd>@Model.LastRestockedAt</dd></dl>
+@using (Html.BeginForm("Delete", "Inventories", new { id = Model.Id }, FormMethod.Post)) {
+@Html.AntiForgeryToken()
+<button type="submit" class="btn btn-danger">Eliminar</button>
+}
+@Html.ActionLink("Volver", "Index")

@@ -1,0 +1,16 @@
+.vs/
+**/bin/
+**/obj/
+**/packages/
+*.user
+*.suo
+*.cache
+*.log
+*.pdb
+*.mdf
+*.ldf
+
+# Configuraciones locales de base de datos
+PAP.Mvc/Web.config
+PAP.DataAccess/App.Config
+PAP.Repositories/App.config

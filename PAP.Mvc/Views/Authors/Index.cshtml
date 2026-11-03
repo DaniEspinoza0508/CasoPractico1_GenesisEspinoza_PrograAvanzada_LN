@@ -1,0 +1,43 @@
+﻿
+@model IEnumerable<PAP.DataAccess.Author>
+
+@{
+    ViewBag.Title = "Autores";
+}
+
+<h2>Autores</h2>
+
+<p style="text-align:right">
+    @Html.ActionLink("Create", "Create", null,
+        new { @class = "btn btn-primary" })
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Nombre</th>
+            <th>Apellido</th>
+            <th>País</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var author in Model)
+        {
+            <tr>
+                <td>@author.Id</td>
+                <td>@author.FirstName</td>
+                <td>@author.LastName</td>
+                <td>@author.Country</td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = author.Id })
+                    |
+                    @Html.ActionLink("Details", "Details", new { id = author.Id })
+                    |
+                    @Html.ActionLink("Delete", "Delete", new { id = author.Id })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

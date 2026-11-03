@@ -1,0 +1,46 @@
+﻿
+@model PAP.DataAccess.Employee
+
+@{
+    ViewBag.Title = "Employee Details";
+}
+
+<h2>Employee Details</h2>
+
+<dl class="row">
+    <dt class="col-sm-3">ID</dt>
+    <dd class="col-sm-9">@Model.Id</dd>
+
+    <dt class="col-sm-3">Role</dt>
+    <dd class="col-sm-9">
+        @(Model.Role != null
+            ? Model.Role.Name
+            : Model.RoleId.ToString())
+    </dd>
+
+    <dt class="col-sm-3">First Name</dt>
+    <dd class="col-sm-9">@Model.FirstName</dd>
+
+    <dt class="col-sm-3">Last Name</dt>
+    <dd class="col-sm-9">@Model.LastName</dd>
+
+    <dt class="col-sm-3">Email</dt>
+    <dd class="col-sm-9">@Model.Email</dd>
+
+    <dt class="col-sm-3">Active</dt>
+    <dd class="col-sm-9">
+        @(Model.IsActive ? "Yes" : "No")
+    </dd>
+
+    <dt class="col-sm-3">Created At</dt>
+    <dd class="col-sm-9">
+        @Model.CreatedAt.ToString("dd/MM/yyyy HH:mm")
+    </dd>
+</dl>
+
+@Html.ActionLink("Edit", "Edit",
+    new { id = Model.Id },
+    new { @class = "btn btn-warning" })
+
+@Html.ActionLink("Back to List", "Index", null,
+    new { @class = "btn btn-secondary" })

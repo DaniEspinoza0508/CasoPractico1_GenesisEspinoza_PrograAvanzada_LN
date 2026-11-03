@@ -1,0 +1,11 @@
+@model PAP.DataAccess.Inventory
+@{ ViewBag.Title = "Details Inventory"; }
+<h2>Details Inventory</h2>
+
+<dl class="dl-horizontal"><dt>Id</dt><dd>@Model.Id</dd>
+<dt>BookId</dt><dd>@Model.BookId</dd>
+<dt>QuantityInStock</dt><dd>@Model.QuantityInStock</dd>
+<dt>ReorderLevel</dt><dd>@Model.ReorderLevel</dd>
+<dt>LastRestockedAt</dt><dd>@Model.LastRestockedAt</dd></dl>
+@Html.ActionLink("Editar", "Edit", new { id = Model.Id }, new { @class = "btn btn-warning" })
+@Html.ActionLink("Volver", "Index")

@@ -1,0 +1,30 @@
+﻿
+@model PAP.DataAccess.Publisher
+
+@{
+    ViewBag.Title = "Create Publisher";
+}
+
+<h2>Create Publisher</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Name)
+        @Html.TextBoxFor(model => model.Name,
+            new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.Name,
+            "", new { @class = "text-danger" })
+    </div>
+
+    <br />
+
+    <button type="submit" class="btn btn-primary">Save</button>
+
+    @Html.ActionLink("Back to List", "Index", null,
+        new { @class = "btn btn-secondary" })
+}
